@@ -94,7 +94,6 @@ def search_by_category():
     print("6 活动中心")
 
     choice = input("请选择类别：")
-
     category_map = {
         "1": "教学楼",
         "2": "学生宿舍",
@@ -103,7 +102,6 @@ def search_by_category():
         "5": "图书馆",
         "6": "活动"
     }
-
     if choice not in category_map:
         print("输入无效。")
         return
@@ -120,8 +118,6 @@ def search_by_category():
             count += 1
 
     print(f"\n共找到 {count} 个地点。")
-
-
 # 查询统计
 def statistics():
     total = len(campus_places)
@@ -147,7 +143,6 @@ def statistics():
     print(f"宿舍楼数量：{dormitory}")
     print(f"体育设施数量：{sports}")
 
-
 # 显示菜单
 def show_menu():
     print("\n========== 校园导航查询系统 V2.0 ==========")
@@ -157,8 +152,6 @@ def show_menu():
     print("4 按类别查询")
     print("5 地点统计")
     print("0 退出系统")
-
-
 # =========================
 # 主函数
 # =========================
@@ -192,7 +185,6 @@ def main():
 
         else:
             print("输入无效，请重新输入。")
-
 
 # 程序入口
 if __name__ == "__main__":
