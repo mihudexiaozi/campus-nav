@@ -26,6 +26,49 @@ campus_places = [
     {"id": 16, "name": "3A宿舍楼", "location": "学生宿舍"},
     {"id": 17, "name": "3B宿舍楼", "location": "学生宿舍"},
 ]
+############################################
+# BM算法
+############################################
+
+def build_bad(pattern):
+
+    bad = {}
+
+    for i in range(len(pattern)):
+        bad[pattern[i]] = i
+
+    return bad
+
+
+def BM(text, pattern):
+
+    n = len(text)
+    m = len(pattern)
+
+    if m == 0:
+        return True
+
+    bad = build_bad(pattern)
+
+    s = 0
+
+    while s <= n - m:
+
+        j = m - 1
+
+        while j >= 0 and pattern[j] == text[s + j]:
+            j -= 1
+
+        if j < 0:
+            return True
+
+        else:
+
+            c = text[s + j]
+
+            s += max(1, j - bad.get(c, -1))
+
+    return False
 
 # =========================
 # 功能函数区域
