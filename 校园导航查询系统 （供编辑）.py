@@ -125,6 +125,119 @@ def BM(text, pattern):
     return False
 
 
+# ==========================================
+# BST
+# ==========================================
+
+class TreeNode:
+
+    def __init__(self, place):
+
+        self.place = place
+        self.left = None
+        self.right = None
+
+
+def insert_bst(root, place):
+
+    if root is None:
+        return TreeNode(place)
+
+    if place["id"] < root.place["id"]:
+
+        root.left = insert_bst(
+            root.left,
+            place
+        )
+
+    else:
+
+        root.right = insert_bst(
+            root.right,
+            place
+        )
+
+    return root
+
+
+def build_bst():
+
+    root = None
+
+    for p in campus_places:
+
+        root = insert_bst(
+            root,
+            p
+        )
+
+    return root
+
+
+def bst_search(root, target):
+
+    if root is None:
+        return None
+
+    if target == root.place["id"]:
+        return root.place
+
+    elif target < root.place["id"]:
+
+        return bst_search(
+            root.left,
+            target
+        )
+
+    else:
+
+        return bst_search(
+            root.right,
+            target
+        )
+
+
+def inorder(root):
+
+    if root:
+
+        inorder(root.left)
+
+        print(
+            f"[{root.place['id']}] "
+            f"{root.place['name']} - "
+            f"{root.place['location']}"
+        )
+
+        inorder(root.right)
+
+
+def tree_height(root):
+
+    if root is None:
+        return 0
+
+    return max(
+        tree_height(root.left),
+        tree_height(root.right)
+    ) + 1
+
+
+def count_leaf(root):
+
+    if root is None:
+        return 0
+
+    if root.left is None and root.right is None:
+        return 1
+
+    return (
+        count_leaf(root.left)
+        + count_leaf(root.right)
+    )
+
+
+
 ############################################
 # 查看所有地点
 ############################################
